@@ -9,6 +9,9 @@ import java.util.List;
 
 @RestController("/department")
 public class DepartmentController {
+
+
+
     @GetMapping("/getDepartment")
     public Department getDepartment(long id){//根据ID获取部门
 
@@ -20,10 +23,14 @@ public class DepartmentController {
         return new ArrayList<>();
     }
 
+
+
     @GetMapping("/getAllLevel2Department")
     public List<Department> getAllLevel2Department(long parentId){//获取二级部门
         return new ArrayList<>();
     }
+
+
 
     @GetMapping("/getAllLevel3Department")
     public List<Department> getAllLevel3Department(long parentId){//获取三级部门

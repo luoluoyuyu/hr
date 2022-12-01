@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hr.dao.LoginMapper">
+
+    <resultMap id="login" type="com.hr.pojo.LoginUser">
+        <id column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+        <result column="end_time" property="endTime"/>
+        <result column="login_time" property="login_time"/>
+        <result column="token" property="token"/>
+
+    </resultMap>
+
+    <select id="getLoginUser" resultMap="login">
+        select * from hr.login where user_id=#{id}
+    </select>
+
+    <insert id="addLoginUser">
+        insert hr.login (`user_id`,`login_time`,`end_time`,`token`,`user_name`)
+        values (#{user.userId},#{user.loginTime},#{user.endTime},#{user.token},#{user.userName})
+    </insert>
+
+    <update id="updateLoginUser">
+        update hr.login
+        <set>
+            <if test="user.login_time != null">
+                login_time=#{user.loginTime},
+            </if>
+            <if test=" user.end_time != null ">
+                end_time=#{user.endTime},
+            </if>
+            <if test="user.name!=null">
+                user_name=#{user.userName},
+            </if>
+            <if test="user.token!=null">
+                user_name=#{token},
+            </if>
+        </set>
+        where user_id=#{user.userId}
+    </update>
+
+</mapper>
