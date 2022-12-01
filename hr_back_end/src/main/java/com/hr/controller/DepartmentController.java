@@ -1,12 +1,13 @@
 package com.hr.controller;
 
 import com.hr.pojo.Department;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Api
 @RestController("/department")
 public class DepartmentController {
 
